@@ -155,3 +155,34 @@ void salaryCalculation() {
     }
     cout << "Total Salary to be Paid: $" << totalSalary << endl;
 }
+
+
+
+// Main Func.
+int main() {
+    // Initializing one Excel File...
+    initializeExcel();
+
+    int choice;
+    do {
+        cout << "\n----- Employee Management System -----\n";
+        cout << "1. Add Employee\n2. Delete Employee\n3. View Employees\n4. Search Employee\n";
+        cout << "5. Salary Calculation\n6. Exit\nEnter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: addEmployee(); break;
+            case 2: deleteEmployee(); break;
+            case 3: displayEmployees(); break;
+            case 4: searchEmployee(); break;
+            case 5: salaryCalculation(); break;
+            case 6: cout << "Exiting...\n"; break;
+            default: cout << "Invalid choice! Try again.\n";
+        }
+    } while (choice != 6);
+
+    return 0;
+}
+
+// :)
+
