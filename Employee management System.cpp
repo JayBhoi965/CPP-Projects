@@ -140,3 +140,18 @@ void searchEmployee() {
     cout << "Employee not found!\n";
 }
 
+
+// Calculating the total salary 
+void salaryCalculation() {
+    xlnt::workbook wb;
+    wb.load(FILE_NAME);
+    xlnt::worksheet ws = wb.active_sheet();
+
+    double totalSalary = 0;
+    int row = 2;
+    while (ws.cell("A" + to_string(row)).has_value()) {
+        totalSalary += ws.cell("D" + to_string(row)).value<double>();
+        row++;
+    }
+    cout << "Total Salary to be Paid: $" << totalSalary << endl;
+}
