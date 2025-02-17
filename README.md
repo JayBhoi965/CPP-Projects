@@ -13,7 +13,9 @@ This is a simple Employee Management System built using C++ that stores and mana
 Contributions are welcome! Feel free to submit issues or pull requests.
 <hr>
 <br>
-## Installation
+
+
+### Installation
 To run this project, you need to install the **xlnt** library, which enables interaction with Excel files in C++.
 ### Installing xlnt
 #### Windows (Using vcpkg)
