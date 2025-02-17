@@ -20,3 +20,10 @@ To run this project, you need to install the **xlnt** library, which enables int
    git clone https://github.com/microsoft/vcpkg.git
    cd vcpkg
    ./bootstrap-vcpkg.bat
+
+2. Install xlnt:
+   ```sh
+   vcpkg install xlnt
+3.Link xlnt to The project:
+   ```sh
+   g++ -std=c++11 main.cpp -o EmployeeSystem -I<path_to_vcpkg>/installed/x64-windows/include -L<path_to_vcpkg>/installed/x64-windows/lib -lxlnt
