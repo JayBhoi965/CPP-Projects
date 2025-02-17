@@ -15,7 +15,6 @@ Contributions are welcome! Feel free to submit issues or pull requests.
 <br>
 ## Installation
 To run this project, you need to install the **xlnt** library, which enables interaction with Excel files in C++.
-
 ### Installing xlnt
 #### Windows (Using vcpkg)
 1. Install vcpkg if you haven't already:
