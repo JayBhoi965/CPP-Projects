@@ -10,6 +10,9 @@ This is a simple Employee Management System built using C++ that stores and mana
 - Display all employee records
 - Calculate total salary payout
 
+Contributions are welcome! Feel free to submit issues or pull requests.
+<hr>
+<br>
 ## Installation
 To run this project, you need to install the **xlnt** library, which enables interaction with Excel files in C++.
 
@@ -27,3 +30,4 @@ To run this project, you need to install the **xlnt** library, which enables int
 3.Link xlnt to The project:
    ```sh
    g++ -std=c++11 main.cpp -o EmployeeSystem -I<path_to_vcpkg>/installed/x64-windows/include -L<path_to_vcpkg>/installed/x64-windows/lib -lxlnt
+
