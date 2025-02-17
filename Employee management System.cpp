@@ -96,4 +96,47 @@ void deleteEmployee() {
 }
 
 // display employees from Excel
-void displayEmployees();
+void displayEmployees() {
+    xlnt::workbook wb;
+    wb.load(FILE_NAME);
+    xlnt::worksheet ws = wb.active_sheet();
+
+    cout << "\n----- Employee List -----\n";
+    cout << "ID\tName\tDepartment\tSalary\tAttendance\n";
+
+    int row = 2;
+    while (ws.cell("A" + to_string(row)).has_value()) {
+        cout << ws.cell("A" + to_string(row)).value<int>() << "\t"
+             << ws.cell("B" + to_string(row)).value<string>() << "\t"
+             << ws.cell("C" + to_string(row)).value<string>() << "\t"
+             << ws.cell("D" + to_string(row)).value<double>() << "\t"
+             << ws.cell("E" + to_string(row)).value<string>() << endl;
+        row++;
+    }
+}
+
+//Search an employee by ID
+void searchEmployee() {
+    xlnt::workbook wb;
+    wb.load(FILE_NAME);
+    xlnt::worksheet ws = wb.active_sheet();
+
+    int id;
+    cout << "Enter Employee ID to search: ";
+    cin >> id;
+
+    int row = 2;
+    while (ws.cell("A" + to_string(row)).has_value()) {
+        if (ws.cell("A" + to_string(row)).value<int>() == id) {
+            cout << "ID: " << ws.cell("A" + to_string(row)).value<int>() << endl;
+            cout << "Name: " << ws.cell("B" + to_string(row)).value<string>() << endl;
+            cout << "Department: " << ws.cell("C" + to_string(row)).value<string>() << endl;
+            cout << "Salary: $" << ws.cell("D" + to_string(row)).value<double>() << endl;
+            cout << "Attendance: " << ws.cell("E" + to_string(row)).value<string>() << endl;
+            return;
+        }
+        row++;
+    }
+    cout << "Employee not found!\n";
+}
+
