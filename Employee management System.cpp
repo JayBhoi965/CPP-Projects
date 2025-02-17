@@ -52,3 +52,48 @@ void addEmployee() {
 }
 
 
+ 
+void deleteEmployee() {
+    xlnt::workbook wb;
+    wb.load(FILE_NAME);
+    xlnt::worksheet ws = wb.active_sheet();
+
+    int id;
+    cout << "Enter Employee ID to delete: ";
+    cin >> id;
+
+    bool found = false;
+    int row = 2;
+    while (ws.cell("A" + to_string(row)).has_value()) {
+        if (ws.cell("A" + to_string(row)).value<int>() == id) {
+            found = true;
+            break;
+        }
+        row++;
+    }
+
+    if (found) {
+        int lastRow = row;
+        while (ws.cell("A" + to_string(lastRow + 1)).has_value()) {
+            ws.cell("A" + to_string(lastRow)).value(ws.cell("A" + to_string(lastRow + 1)).value<int>());
+            ws.cell("B" + to_string(lastRow)).value(ws.cell("B" + to_string(lastRow + 1)).value<string>());
+            ws.cell("C" + to_string(lastRow)).value(ws.cell("C" + to_string(lastRow + 1)).value<string>());
+            ws.cell("D" + to_string(lastRow)).value(ws.cell("D" + to_string(lastRow + 1)).value<double>());
+            ws.cell("E" + to_string(lastRow)).value(ws.cell("E" + to_string(lastRow + 1)).value<string>());
+            lastRow++;
+        }
+        ws.cell("A" + to_string(lastRow)).clear();
+        ws.cell("B" + to_string(lastRow)).clear();
+        ws.cell("C" + to_string(lastRow)).clear();
+        ws.cell("D" + to_string(lastRow)).clear();
+        ws.cell("E" + to_string(lastRow)).clear();
+
+        wb.save(FILE_NAME);
+        cout << "Employee deleted successfully!\n";
+    } else {
+        cout << "Employee not found!\n";
+    }
+}
+
+// display employees from Excel
+void displayEmployees();
